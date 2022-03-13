@@ -1,7 +1,8 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const { join } = require('path');
-const router = require('./routes');
+const { routerAPI, routerPages } = require('./routes');
+const { notFoundError, serverError } = require('./controllers');
 
 const app = express();
 
@@ -10,8 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(join(__dirname, '..', 'public')));
+app.use(express.static(join(__dirname, '..', 'public', 'static')));
 
-app.use(router);
+app.use(routerPages);
+app.use('/api/v1', routerAPI);
 
+app.use(notFoundError);
+app.use(serverError);
 module.exports = app;
