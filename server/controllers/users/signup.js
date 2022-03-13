@@ -8,7 +8,7 @@ const signup = (req, res) => {
     if (validationResult.success) {
       hashPassword(password, ({ hash, success, error }) => {
         if (!success) {
-          res.status(500).send({ success: false, message: error });
+          res.status(500).json({ success: false, message: error });
         } else {
           addUser(name, email, hash)
             .then((data) => {
@@ -20,11 +20,11 @@ const signup = (req, res) => {
                 res.status(500).json({ message: jwtError });
               });
             })
-            .catch((err) => res.status(500).send({ success: false, message: err }));
+            .catch((err) => res.status(500).json({ success: false, message: err }));
         }
       });
     } else {
-      res.status(500).send({ success: false, message: validationResult.message });
+      res.status(500).json({ success: false, message: validationResult.message });
     }
   });
 };
