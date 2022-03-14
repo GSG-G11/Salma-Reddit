@@ -1,7 +1,7 @@
-const { getPostDB } = require('../../database/queries');
+const { getPostsDB } = require('../../database/queries');
 
 const getPost = (req, res) => {
-  getPostDB()
+  getPostsDB()
     .then((data) => {
       const { rowCount, rows } = data;
       res.status(200).json({ success: true, rowCount, rows });

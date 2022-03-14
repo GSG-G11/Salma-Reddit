@@ -1,5 +1,5 @@
 const connection = require('../../config/connection');
 
-const getPostDB = () => connection.query('SELECT * FROM posts');
+const getPostsDB = () => connection.query('SELECT * FROM posts');
 
-module.exports = getPostDB;
+module.exports = getPostsDB;
