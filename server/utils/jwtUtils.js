@@ -11,4 +11,13 @@ const jwtSign = (payload) => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = { jwtSign };
+const jwtVerify = (token) => new Promise((resolve, reject) => {
+  jwt.verify(token, process.env.PRIVATE_KEY, (error, data) => {
+    if (!error) {
+      resolve(data);
+    } else {
+      reject(error);
+    }
+  });
+});
+module.exports = { jwtSign, jwtVerify };

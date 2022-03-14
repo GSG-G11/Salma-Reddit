@@ -1,9 +1,10 @@
 const notFoundError = require('./errorHandle/notFound');
 const serverError = require('./errorHandle/serverError');
+const addPost = require('./post/addPost');
 const login = require('./users/login');
 const logout = require('./users/logout');
 const signup = require('./users/signup');
 
 module.exports = {
-  serverError, notFoundError, login, signup, logout,
+  serverError, notFoundError, login, signup, logout, addPost,
 };
