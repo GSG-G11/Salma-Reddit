@@ -1,3 +1,4 @@
+/* cSpell:disable */
 * {
   padding: 0;
   margin: 0;
@@ -62,7 +63,7 @@
   display: flex;
   flex-direction: column;
   background-color: #dae0e6;
-  height: 100vh;
+  min-height: 100vh;
 }
 /* post */
 .add-post {
@@ -105,9 +106,7 @@
 .add-post input {
   padding: 5px;
 }
-.post-content {
-  padding: 5px;
-}
+
 .posts-card {
   display: flex;
   flex-direction: column;
@@ -116,7 +115,7 @@
 .post {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 15px;
   width: 600px;
   background-color: white;
   border-radius: 5px;
@@ -131,6 +130,10 @@
 }
 .likes-number {
   font-weight: bold;
+  margin-left: 5px;
+}
+.fa-heart,.fa-trash-can {
+  cursor: pointer;
 }
 .like-icon {
   all: unset;
@@ -139,4 +142,23 @@
 .delete-icon {
   all: unset;
   cursor: pointer;
+}
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 7px;
+}
+.posted-at {
+  font-size: 12px;
+  color: gray;
+}
+.posted-by {
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+}
+.posted-by:hover {
+  text-decoration: underline;
 }
