@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> Hello Word!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reddit</title>
+    <link rel="icon" href="./assets/logo.png" type="image/gif" sizes="30x30" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&family=Martel+Sans:wght@200;300;400;600&family=Mea+Culpa&family=Palanquin+Dark:wght@400;500;600&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400&family=Rowdies:wght@300&family=Sarabun:wght@100;200&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css">
+
+  </head>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo-section">
+          <img class="logo-app" src="./assets/logo.png" />
+          <h3 class="app-name">reddit</h3>
+        </div>
+        <div class="sign-button-section">
+          <button class="login">Log In</button>
+          <button class="signup">Sign Up</button>
+        </div>
+      </nav>
+      <section class="main-content">
+        <section class="posts-section">
+          <!-- <section class="add-post">
+           <input class="title" placeholder="Title" required>
+           <textarea class="post-content" placeholder="Content" required></textarea>
+           <input class='image-input' type="url" placeholder="Image Link (optional)">
+           <div class="add-button">
+             <button class="add-post-button"> Create Post</button>
+           </div>
+         </section> -->
+         <div class="posts-card">
+          <div class="post">
+            <div class="post-content">
+            <div class="post-owner"></div>
+              <h4 class="post-title">Hello World!</h4>
+              <p class="post-description">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Incidunt voluptas labore distinctio inventore dolores iure
+                officiis quaerat nihil, voluptates illum aspernatur, vero,
+                soluta aliquid cupiditate nulla nostrum? Earum, harum quae!
+              </p>
+            </div>
+              <div class="post-icon">
+                <div class="like-section">
+                  <button class="like-icon">
+                    <i class="fa-solid fa-heart" ></i>
+                  </button>
+                  <small class="likes-number">1</small>
+                </div>
+                <button class="delete-icon">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+            <div class="post">
+              <div class="post-content">
+              <div class="post-owner"></div>
+                <h4 class="post-title">Hello World!</h4>
+                <p class="post-description">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Incidunt voluptas labore distinctio inventore dolores iure
+                  officiis quaerat nihil, voluptates illum aspernatur, vero,
+                  soluta aliquid cupiditate nulla nostrum? Earum, harum quae!
+                </p>
+              </div>
+                <div class="post-icon">
+                  <div class="like-section">
+                    <button class="like-icon">
+                      <i class="fa-solid fa-heart" ></i>
+                    </button>
+                    <small class="likes-number">1</small>
+                  </div>
+                  <button class="delete-icon">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+          </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
 </html>
