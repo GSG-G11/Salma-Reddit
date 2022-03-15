@@ -1,0 +1,142 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 10px;
+  height: 50px;
+}
+.logo-section {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.app-name {
+  margin-top: 5px;
+}
+/* .logo-app {
+  width: 40px;
+  height: 45px;
+} */
+.sign-button-section {
+  display: flex;
+  gap: 10px;
+  padding: 5px 15px;
+}
+.login {
+  cursor: pointer;
+  width: 115px;
+  height: 27px;
+  border-radius: 20px;
+  color: #0079d3;
+  font-weight: bold;
+  border: 1px solid #0079d3;
+  background-color: white;
+  letter-spacing: 1.2px;
+}
+.login:hover {
+  background-color: #e9eef1;
+}
+.signup {
+  cursor: pointer;
+  width: 115px;
+  height: 27px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #0079d3;
+  background-color: #0079d3;
+  letter-spacing: 1.2px;
+}
+.signup:hover {
+  background-color: #0079d2d9;
+  border: #0079d2d9;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #dae0e6;
+  height: 100vh;
+}
+/* post */
+.add-post {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  background-color: white;
+  justify-content: center;
+  padding: 10px;
+  gap: 5px;
+}
+.posts-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.add-button {
+  align-self: flex-end;
+}
+.add-post-button {
+  background-color: #ff4500;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  border: none;
+  color: white;
+  font-weight: 400;
+  margin-top: 10px;
+}
+.add-post {
+  border-radius: 5px;
+  padding: 10px;
+}
+.add-post-button:hover {
+  background-color: #ff4500b0;
+}
+.add-post input {
+  padding: 5px;
+}
+.post-content {
+  padding: 5px;
+}
+.posts-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 600px;
+  background-color: white;
+  border-radius: 5px;
+}
+.post-icon {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.likes-number {
+  font-weight: bold;
+}
+.like-icon {
+  all: unset;
+  cursor: pointer;
+}
+.delete-icon {
+  all: unset;
+  cursor: pointer;
+}
