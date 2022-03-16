@@ -28,6 +28,9 @@
         <div class="sign-button-section">
           <button class="login">Log In</button>
           <button class="signup">Sign Up</button>
+          <p class="Welcome-user"></p>
+          <button class="logout">Log Out</button>
+
         </div>
       </nav>
       <section class="main-content">
@@ -46,22 +49,26 @@
         </section>
       </section>
     </div>
+    <!-- signup -->
     <div id="myModal" class="signupModal modal">
-      <div class="modal-content">
+      <form class="modal-content signup-form">
         <p class="close">X</p>
-        <input type="text" placeholder="Enter Your Name" required>
-        <input type="email" placeholder="Enter Your Email" required>
-        <input type="password" placeholder="Enter Your Password">
+        <input type="text" name="name" placeholder="Enter Your Name" required>
+        <input type="email" name="email" placeholder="Enter Your Email" required>
+        <input type="password" name="password" placeholder="Enter Your Password">
         <button class="signup-submit" type="submit"> Sign up</button>
-      </div>
+        <div class="signup-error"> </div>
+      </form>
     </div>
+    <!-- login -->
     <div id="myModal" class="loginModal modal">
-      <div class="modal-content">
+        <form class="modal-content login-form" action="javascript:void(0);">
         <p class="close">X</p>
-        <input type="email" placeholder="Enter Your Email" required>
-        <input type="password" placeholder="Enter Your Password">
-        <button class="signup-submit" type="submit"> Log in</button>
-      </div>
+        <input type="email" name="email" placeholder="Enter Your Email" required>
+        <input type="password" name="password" placeholder="Enter Your Password">
+        <button class="signin-submit" type="submit"> Log in</button>
+        <div class="signin-error"> </div>
+      </form>
     </div>
     <script src="./js/modal.js"></script>
     <script src="./js/logic.js"></script>

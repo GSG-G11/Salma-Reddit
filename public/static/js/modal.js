@@ -11,12 +11,6 @@ closeBtn.addEventListener('click', () => {
   signupModal.style.display = 'none';
 });
 
-window.onclick = (event) => {
-  if (event.target === signupModal) {
-    signupModal.style.display = 'none';
-  }
-};
-
 loginBtn.addEventListener('click', () => {
   loginModal.style.display = 'block';
 });
@@ -25,7 +19,8 @@ closeBtn.addEventListener('click', () => {
 });
 
 window.onclick = (event) => {
-  if (event.target === loginModal) {
+  if (event.target === signupModal || event.target === loginModal) {
+    signupModal.style.display = 'none';
     loginModal.style.display = 'none';
   }
 };

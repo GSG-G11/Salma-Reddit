@@ -31,6 +31,7 @@
   padding: 5px 15px;
 }
 .login {
+  display: 'block';
   cursor: pointer;
   width: 115px;
   height: 27px;
@@ -45,6 +46,7 @@
   background-color: #e9eef1;
 }
 .signup {
+  display: 'block';
   cursor: pointer;
   width: 115px;
   height: 27px;
@@ -132,7 +134,8 @@
   font-weight: bold;
   margin-left: 5px;
 }
-.fa-heart,.fa-trash-can {
+.fa-heart,
+.fa-trash-can {
   cursor: pointer;
 }
 .like-icon {
@@ -161,4 +164,16 @@
 }
 .posted-by:hover {
   text-decoration: underline;
+}
+.logout {
+  display: none;
+  cursor: pointer;
+  width: 115px;
+  height: 30px;
+  border-radius: 20px;
+  color: #0079d3;
+  font-weight: bold;
+  border: 1px solid #0079d3;
+  background-color: white;
+  letter-spacing: 1.2px;
 }

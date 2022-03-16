@@ -44,7 +44,8 @@
 .modal-content input:focus {
   box-shadow: 0 0 0 0.1rem #97979750;
 }
-.signup-submit {
+.signup-submit,
+.signin-submit {
   height: 42px;
   border: none;
   background: #ff4500;
@@ -53,8 +54,15 @@
   cursor: pointer;
   transition-duration: 0.3s;
 }
-.signup-submit:hover {
+.signup-submit:hover,
+.signin-submit:hover {
   background: #ff4400d3;
+}
+.signin-error,
+.signup-error {
+  display: none;
+  color: red;
+  font-size: 14px;
 }
 .close {
   color: #ff4400d3;
