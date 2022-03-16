@@ -9,7 +9,17 @@ const logoutBtn = document.querySelector('.logout');
 const WelcomeUser = document.querySelector('.Welcome-user');
 const addPostForm = document.querySelector('.add-post');
 
-const renderPosts = () => {
+const deletePost = (id, element) => {
+  fetch(`/api/v1/posts/${id}`, { method: 'DELETE' })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) {
+        element.remove();
+      }
+    });
+};
+
+const renderPosts = (userID) => {
   fetchPosts().then((data) => {
     const { rows } = data;
     rows.forEach((element) => {
@@ -26,6 +36,7 @@ const renderPosts = () => {
       const postedAt = createElement('p', 'posted-at');
       const postedBy = createElement('a', 'posted-by');
       postedBy.innerText = `${element.username}`;
+      postedBy.href = `/profile/${element.user_id}`;
       const postIcon = createElement('div', 'post-icon');
       const likeSection = createElement('div', 'like-section');
       const likeIcon = createElement('i', 'fa-solid fa-heart');
@@ -36,7 +47,12 @@ const renderPosts = () => {
       likeSection.appendChild(likeIcon);
       likeSection.appendChild(likeNumber);
       postIcon.appendChild(likeSection);
-      postIcon.appendChild(deleteIcon);
+      if (userID && userID === element.user_id) {
+        postIcon.appendChild(deleteIcon);
+        deleteIcon.addEventListener('click', () => {
+          deletePost(element.id, post);
+        });
+      }
       postedAt.appendChild(postedBy);
       postedAt.innerHTML += ` | ${new Date(
         element.created_at,
@@ -124,35 +140,40 @@ logoutBtn.addEventListener('click', () => {
     });
 });
 
-addPostForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  errorDiv.style.display = 'none';
-  errorDiv.innerText = '';
-  const formData = new FormData(addPostForm);
-  const title = formData.get('title');
-  const description = formData.get('content');
-  const img = formData.get('imageLink');
+// Delete
 
-  fetch('/api/v1/posts', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title, description, img }),
-  })
-    .then((data) => data.json())
-    .then((result) => {
-      const { success, message } = result;
-      if (success) {
-        window.location.reload();
-      } else {
-        addPostErrorDiv.style.display = 'block';
-        addPostErrorDiv.innerText = message;
-      }
+const addPost = () => {
+  addPostForm.style.display = 'flex';
+  addPostForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorDiv.style.display = 'none';
+    errorDiv.innerText = '';
+    const formData = new FormData(addPostForm);
+    const title = formData.get('title');
+    const description = formData.get('content');
+    const img = formData.get('imageLink');
+
+    fetch('/api/v1/posts', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, description, img }),
     })
-    .catch((error) => {
-      addPostErrorDiv.style.display = 'block';
-      addPostErrorDiv.innerText = error;
-    });
-});
+      .then((data) => data.json())
+      .then((result) => {
+        const { success, message } = result;
+        if (success) {
+          window.location.reload();
+        } else {
+          addPostErrorDiv.style.display = 'block';
+          addPostErrorDiv.innerText = message;
+        }
+      })
+      .catch((error) => {
+        addPostErrorDiv.style.display = 'block';
+        addPostErrorDiv.innerText = error;
+      });
+  });
+};
 
 const checkCookie = () => {
   const token = getCookie('token');
@@ -163,11 +184,16 @@ const checkCookie = () => {
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'block';
       WelcomeUser.textContent = `Welcome ${tokenParsed.name}`;
+      addPost();
+    }
+    if (tokenParsed.id) {
+      return tokenParsed.id;
     }
   }
+  return null;
 };
 
 window.onload = () => {
-  checkCookie();
-  renderPosts();
+  const userID = checkCookie();
+  renderPosts(userID);
 };
