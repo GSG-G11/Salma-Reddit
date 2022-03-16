@@ -18,6 +18,13 @@ const renderProfilePosts = (data, user) => {
 
     const cardFooter = createElement('div', 'card-footer');
     const postInfo = createElement('div', 'post-info');
+    const imageDiv = createElement('div', 'image-section');
+    const imagePost = createElement('img', 'image-post');
+    if (element.img) {
+      imagePost.src = element.img;
+      imagePost.alt = 'image';
+      imageDiv.appendChild(imagePost);
+    }
 
     const postedAt = createElement('p', 'posted-at');
     const postedBy = createElement('a', 'posted-by');
@@ -28,11 +35,9 @@ const renderProfilePosts = (data, user) => {
 
     const likeNumber = createElement('small', 'likes-number');
     likeNumber.innerText = '1';
-    // const deleteIcon = createElement('i', 'fa-solid fa-trash-can');
     likeSection.appendChild(likeIcon);
     likeSection.appendChild(likeNumber);
     postIcon.appendChild(likeSection);
-    // postIcon.appendChild(deleteIcon);
     postedAt.appendChild(postedBy);
     postedAt.innerHTML += ` | ${new Date(element.created_at).toLocaleString()}`;
     postContent.appendChild(postTitle);
@@ -41,6 +46,7 @@ const renderProfilePosts = (data, user) => {
     cardFooter.appendChild(postInfo);
     cardFooter.appendChild(postIcon);
     post.appendChild(postContent);
+    post.appendChild(imageDiv);
     post.appendChild(cardFooter);
     postsSection.appendChild(post);
   });

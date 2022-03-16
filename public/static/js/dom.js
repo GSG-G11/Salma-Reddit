@@ -32,6 +32,13 @@ const renderPosts = (userID) => {
 
       const cardFooter = createElement('div', 'card-footer');
       const postInfo = createElement('div', 'post-info');
+      const imageDiv = createElement('div', 'image-section');
+      const imagePost = createElement('img', 'image-post');
+      if (element.img) {
+        imagePost.src = element.img;
+        imagePost.alt = 'image';
+        imageDiv.appendChild(imagePost);
+      }
 
       const postedAt = createElement('p', 'posted-at');
       const postedBy = createElement('a', 'posted-by');
@@ -63,6 +70,7 @@ const renderPosts = (userID) => {
       cardFooter.appendChild(postInfo);
       cardFooter.appendChild(postIcon);
       post.appendChild(postContent);
+      post.appendChild(imageDiv);
       post.appendChild(cardFooter);
       postsSection.appendChild(post);
     });
