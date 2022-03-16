@@ -1,6 +1,7 @@
-const { getPostByUserId, findUserById } = require('../../database/queries');
+const { getPostByUserId, findUserById, likedPost } = require('../../database/queries');
 
 const getUserProfile = (req, res) => {
+  const { userID: currantId } = req;
   const { userID } = req.params;
   findUserById(userID)
     .then((user) => {
@@ -9,11 +10,19 @@ const getUserProfile = (req, res) => {
       } else {
         getPostByUserId(userID)
           .then((post) => {
-            res
-              .status(200)
-              .json({ success: true, posts: post.rows, user: user.rows[0] });
-          })
-          .catch(() => res.status(500).json({ success: false }));
+            likedPost(currantId)
+              .then((likedPosts) => {
+                res
+                  .status(200)
+                  .json({
+                    success: true,
+                    posts: post.rows,
+                    user: user.rows[0],
+                    likedPosts: likedPosts.rows,
+                  });
+              })
+              .catch(() => res.status(500).json({ success: false }));
+          });
       }
     })
     .catch(() => res.status(500).json({ success: false }));

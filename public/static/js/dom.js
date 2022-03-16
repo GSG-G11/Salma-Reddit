@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
 const postsSection = document.querySelector('.posts-card');
 const loginForm = document.querySelector('.login-form');
@@ -16,12 +17,30 @@ const deletePost = (id, element) => {
       if (res.success) {
         element.remove();
       }
-    });
+    })
+    .catch(() => new Error("Couldn't fetch Data"));
+};
+
+const likedPost = (postID, element, likeNumber) => {
+  fetch(`/api/v1/posts/like/${postID}`, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+  }).then((res) => res.json())
+    .then((res) => {
+      if (res.message === 'DELETE') {
+        element.style.color = 'black';
+        likeNumber.innerText = Number(likeNumber.innerText) - 1;
+      } else {
+        element.style.color = '#ff4500';
+        likeNumber.innerText = Number(likeNumber.innerText) + 1;
+      }
+    })
+    .catch(() => new Error("Couldn't fetch Data"));
 };
 
 const renderPosts = (userID) => {
   fetchPosts().then((data) => {
-    const { rows } = data;
+    const { rows, likedPosts } = data;
     rows.forEach((element) => {
       const post = createElement('div', 'post');
       const postContent = createElement('div', 'post-content');
@@ -47,9 +66,17 @@ const renderPosts = (userID) => {
       const postIcon = createElement('div', 'post-icon');
       const likeSection = createElement('div', 'like-section');
       const likeIcon = createElement('i', 'fa-solid fa-heart');
-
       const likeNumber = createElement('small', 'likes-number');
-      likeNumber.innerText = '1';
+      likeNumber.innerText = element.count;
+      if (likedPosts) {
+        const liked = likedPosts.find((ele) => ele.post_id === element.id);
+        if (liked) {
+          likeIcon.style.color = '#ff4500';
+        }
+      }
+      likeIcon.addEventListener('click', () => {
+        likedPost(element.id, likeIcon, likeNumber);
+      });
       const deleteIcon = createElement('i', 'fa-solid fa-trash-can');
       likeSection.appendChild(likeIcon);
       likeSection.appendChild(likeNumber);
@@ -147,8 +174,6 @@ logoutBtn.addEventListener('click', () => {
       window.location.reload();
     });
 });
-
-// Delete
 
 const addPost = () => {
   addPostForm.style.display = 'flex';

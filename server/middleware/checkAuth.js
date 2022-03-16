@@ -9,10 +9,10 @@ const checkAuth = (req, res, next) => {
       next();
     })
       .catch(() => {
-        res.status(401).json({ success: false, message: 'Not Autharized!!' });
+        res.status(401).json({ success: false, message: 'Not Authorized!!' });
       });
   } else {
-    res.status(401).json({ success: false, message: 'Not Autharized!' });
+    res.status(401).json({ success: false, message: 'Not Authorized!' });
   }
 };
 module.exports = checkAuth;

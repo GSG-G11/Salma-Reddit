@@ -4,6 +4,7 @@ const profilePage = require('./pages/profilePage');
 const addPost = require('./post/addPost');
 const deletePost = require('./post/deletePost');
 const getPost = require('./post/getPost');
+const likeToggle = require('./post/likeToggle');
 const getUserProfile = require('./users/getUserProfile');
 const login = require('./users/login');
 const logout = require('./users/logout');
@@ -20,4 +21,5 @@ module.exports = {
   deletePost,
   profilePage,
   getUserProfile,
+  likeToggle,
 };
