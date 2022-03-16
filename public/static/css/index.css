@@ -77,6 +77,11 @@
   padding: 10px;
   gap: 5px;
 }
+.image-post {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
 .posts-section {
   padding: 20px;
   display: flex;
