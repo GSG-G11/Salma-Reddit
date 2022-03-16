@@ -35,14 +35,15 @@
       </nav>
       <section class="main-content">
         <section class="posts-section">
-          <!-- <section class="add-post">
-           <input class="title" placeholder="Title" required>
-           <textarea class="post-content" placeholder="Content" required></textarea>
-           <input class='image-input' type="url" placeholder="Image Link (optional)">
-           <div class="add-button">
-             <button class="add-post-button"> Create Post</button>
-           </div>
-         </section> -->
+          <form class="add-post">
+            <input class="title" name="title" placeholder="Title" required>
+            <textarea class="post-content" name="content" placeholder="Content" required></textarea>
+            <input class='image-input' name="imageLink" type="url" placeholder="Image Link (optional)">
+            <div class="addPost-error"></div>
+            <div class="add-button">
+              <button class="add-post-button"> Create Post</button>
+            </div>
+          </form>
          <div class="posts-card">
           </div>
           </div>
@@ -62,7 +63,7 @@
     </div>
     <!-- login -->
     <div id="myModal" class="loginModal modal">
-        <form class="modal-content login-form" action="javascript:void(0);">
+        <form class="modal-content login-form">
         <p class="close">X</p>
         <input type="email" name="email" placeholder="Enter Your Email" required>
         <input type="password" name="password" placeholder="Enter Your Password">
