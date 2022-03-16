@@ -22,16 +22,13 @@ CREATE TABLE posts (
  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE comments (
+CREATE TABLE likes (
  id SERIAL PRIMARY KEY NOT NULL,
- description TEXT NOT NULL,
- votes INT NOT NULL,
- img TEXT,
- created_at TIMESTAMP DEFAULT NOW(),
  user_id INT,
  FOREIGN KEY (user_id) REFERENCES users(id),
  post_id INT,
- FOREIGN KEY (post_id) REFERENCES posts(id)
+ FOREIGN KEY (post_id) REFERENCES posts(id), 
+ UNIQUE (post_id,user_id)
 );
 
 

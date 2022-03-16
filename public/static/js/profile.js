@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
@@ -6,7 +7,24 @@ const WelcomeUser = document.querySelector('.Welcome-user');
 const profileOwner = document.querySelector('.profile-owner');
 const logoutBtn = document.querySelector('.logoutBtn');
 
-const renderProfilePosts = (data, user) => {
+const likedPost = (postID, element, likeNumber) => {
+  fetch(`/api/v1/posts/like/${postID}`, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+  }).then((res) => res.json())
+    .then((res) => {
+      if (res.message === 'DELETE') {
+        element.style.color = 'black';
+        likeNumber.innerText = Number(likeNumber.innerText) - 1;
+      } else {
+        element.style.color = '#ff4500';
+        likeNumber.innerText = Number(likeNumber.innerText) + 1;
+      }
+    })
+    .catch(() => new Error("Couldn't fetch Data"));
+};
+
+const renderProfilePosts = (data, user, likedPosts) => {
   profileOwner.innerText = user.name;
   data.forEach((element) => {
     const post = createElement('div', 'post');
@@ -35,6 +53,16 @@ const renderProfilePosts = (data, user) => {
 
     const likeNumber = createElement('small', 'likes-number');
     likeNumber.innerText = '1';
+    likeNumber.innerText = element.count;
+    if (likedPosts) {
+      const liked = likedPosts.find((ele) => ele.post_id === element.id);
+      if (liked) {
+        likeIcon.style.color = '#ff4500';
+      }
+    }
+    likeIcon.addEventListener('click', () => {
+      likedPost(element.id, likeIcon, likeNumber);
+    });
     likeSection.appendChild(likeIcon);
     likeSection.appendChild(likeNumber);
     postIcon.appendChild(likeSection);
@@ -67,11 +95,13 @@ const fetchUerData = (id) => {
   fetch(`/api/v1/profile/${id}`)
     .then((res) => res.json())
     .then((res) => {
-      const { posts, user, success } = res;
+      const {
+        posts, user, success, likedPosts,
+      } = res;
       if (!success) {
         window.location = '/';
       } else {
-        renderProfilePosts(posts, user);
+        renderProfilePosts(posts, user, likedPosts);
       }
     });
 };
