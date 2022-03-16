@@ -59,7 +59,8 @@
   background: #ff4400d3;
 }
 .signin-error,
-.signup-error {
+.signup-error,
+.addPost-error {
   display: none;
   color: red;
   font-size: 14px;

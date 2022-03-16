@@ -4,8 +4,10 @@ const loginForm = document.querySelector('.login-form');
 const signupForm = document.querySelector('.signup-form');
 const errorDiv = document.querySelector('.signin-error');
 const signupErrorDiv = document.querySelector('.signup-error');
+const addPostErrorDiv = document.querySelector('.addPost-error');
 const logoutBtn = document.querySelector('.logout');
 const WelcomeUser = document.querySelector('.Welcome-user');
+const addPostForm = document.querySelector('.add-post');
 
 const renderPosts = () => {
   fetchPosts().then((data) => {
@@ -81,7 +83,8 @@ signupForm.addEventListener('submit', (e) => {
 });
 
 // login
-loginForm.addEventListener('submit', () => {
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
   errorDiv.style.display = 'none';
   errorDiv.innerText = '';
   const formData = new FormData(loginForm);
@@ -118,6 +121,36 @@ logoutBtn.addEventListener('click', () => {
     .then((result) => result.json())
     .then(() => {
       window.location.reload();
+    });
+});
+
+addPostForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  errorDiv.style.display = 'none';
+  errorDiv.innerText = '';
+  const formData = new FormData(addPostForm);
+  const title = formData.get('title');
+  const description = formData.get('content');
+  const img = formData.get('imageLink');
+
+  fetch('/api/v1/posts', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title, description, img }),
+  })
+    .then((data) => data.json())
+    .then((result) => {
+      const { success, message } = result;
+      if (success) {
+        window.location.reload();
+      } else {
+        addPostErrorDiv.style.display = 'block';
+        addPostErrorDiv.innerText = message;
+      }
+    })
+    .catch((error) => {
+      addPostErrorDiv.style.display = 'block';
+      addPostErrorDiv.innerText = error;
     });
 });
 
