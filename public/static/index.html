@@ -23,7 +23,7 @@
       <nav class="navbar">
         <div class="logo-section">
           <img class="logo-app" src="./assets/logo.png" />
-          <h3 class="app-name">reddit</h3>
+          <h3 class="app-name"><a href="/">reddit</a></h3>
         </div>
         <div class="sign-button-section">
           <button class="login">Log In</button>
@@ -37,7 +37,7 @@
         <section class="posts-section">
           <form class="add-post">
             <input class="title" name="title" placeholder="Title" required>
-            <textarea class="post-content" name="content" placeholder="Content" required></textarea>
+            <textarea class="post-content" name="content" placeholder="Content"  required></textarea>
             <input class='image-input' name="imageLink" type="url" placeholder="Image Link (optional)">
             <div class="addPost-error"></div>
             <div class="add-button">
@@ -53,7 +53,7 @@
     <!-- signup -->
     <div id="myModal" class="signupModal modal">
       <form class="modal-content signup-form">
-        <p class="close">X</p>
+        <p class="close signup-modal">X</p>
         <input type="text" name="name" placeholder="Enter Your Name" required>
         <input type="email" name="email" placeholder="Enter Your Email" required>
         <input type="password" name="password" placeholder="Enter Your Password">
@@ -64,7 +64,7 @@
     <!-- login -->
     <div id="myModal" class="loginModal modal">
         <form class="modal-content login-form">
-        <p class="close">X</p>
+        <p class="close login-modal">X</p>
         <input type="email" name="email" placeholder="Enter Your Email" required>
         <input type="password" name="password" placeholder="Enter Your Password">
         <button class="signin-submit" type="submit"> Log in</button>
