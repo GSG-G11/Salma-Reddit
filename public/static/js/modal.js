@@ -2,19 +2,20 @@ const signupModal = document.querySelector('.signupModal');
 const signupBtn = document.querySelector('.signup');
 const loginModal = document.querySelector('.loginModal');
 const loginBtn = document.querySelector('.login');
-const closeBtn = document.querySelector('.close');
+const signupCloseBtn = document.querySelector('.signup-modal');
+const loginCloseBtn = document.querySelector('.login-modal');
 
 signupBtn.addEventListener('click', () => {
   signupModal.style.display = 'block';
 });
-closeBtn.addEventListener('click', () => {
+signupCloseBtn.addEventListener('click', () => {
   signupModal.style.display = 'none';
 });
 
 loginBtn.addEventListener('click', () => {
   loginModal.style.display = 'block';
 });
-closeBtn.addEventListener('click', () => {
+loginCloseBtn.addEventListener('click', () => {
   loginModal.style.display = 'none';
 });
 

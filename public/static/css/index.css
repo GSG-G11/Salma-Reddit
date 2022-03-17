@@ -21,10 +21,10 @@
 .app-name {
   margin-top: 5px;
 }
-/* .logo-app {
-  width: 40px;
-  height: 45px;
-} */
+.app-name a {
+  color: #000;
+  text-decoration: none;
+}
 .sign-button-section {
   display: flex;
   gap: 10px;
@@ -97,7 +97,7 @@
   background-color: #ff4500;
   border-radius: 5px;
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 10px;
   border: none;
   color: white;
   font-weight: 400;
@@ -110,8 +110,9 @@
 .add-post-button:hover {
   background-color: #ff4500b0;
 }
-.add-post input {
+.add-post input, .add-post textarea  {
   padding: 5px;
+  border: 0.5px solid #979797;
 }
 
 .posts-card {
@@ -182,6 +183,28 @@
   background-color: white;
   letter-spacing: 1.2px;
 }
-.post-content{
+.post-content {
   padding: 5px;
+  height: 100px;
+}
+
+@media (max-width: 520px) {
+  .sign-button-section {
+    padding: 5px 0;
+    align-items: center;
+  }
+  .Welcome-user {
+    font-size: 12px;
+  }
+  .login,
+  .signup {
+    width: 80px;
+    font-size: 12px;
+    height: 27px;
+    letter-spacing: 0px;
+  }
+  .post,
+  .posts-card,.add-post {
+    width: 100%;
+  }
 }
