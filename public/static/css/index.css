@@ -185,6 +185,8 @@
 }
 .post-content {
   padding: 5px;
+}
+textarea.post-content {
   height: 100px;
 }
 
