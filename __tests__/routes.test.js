@@ -34,11 +34,11 @@ describe('Test routes', () => {
       });
   });
 
-  test('test /api/v1/signup  route,post data with exist email. status 400 ,  content_type : /json/', (done) => {
+  test('test /api/v1/signup  route,post data . status 201 ,  content_type : /json/', (done) => {
     request(app)
       .post('/api/v1/signup')
       .send({ email: 'salmssa@gmail.com', name: 'salma', password: '123456' })
-      .expect(400)
+      .expect(201)
       .expect('content-type', /json/)
       .end((error, result) => {
         if (error) {
